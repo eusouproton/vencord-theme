@@ -1,50 +1,10 @@
-/* Koz lightweight transparency + frosted glass core */
+/* Koz frosted glass patch */
 
-@import url("https://warrayquipsome.github.io/Chillax/Components/WindowsButtons.css");
-@import url("https://warrayquipsome.github.io/Chillax/Components/UserArea.css");
-@import url("https://warrayquipsome.github.io/Chillax/Components/Embeds.css");
-@import url("https://warrayquipsome.github.io/Chillax/Components/ChatArea.css");
-@import url("https://warrayquipsome.github.io/Chillax/Components/ChannelHeader.css");
-@import url("https://warrayquipsome.github.io/Chillax/Components/EmojiPicker.css");
-
-:root {
-    --wallpaper: url("https://raw.githubusercontent.com/eusouproton/vencord-theme/main/rem.jpg");
-    --background-image: var(--wallpaper);
-    --modern-dark-bg: var(--wallpaper);
-    --modern-light-bg: var(--wallpaper);
-    --bg-opacity: 100%;
-    --font-name: Poppins, sans-serif;
-    --font-size: 13px;
-    --accentcolor: 251, 84, 84;
-    --accentcolorV2: #fb5454;
-    --window-margin: 20px;
-    --window-colour: rgba(8, 12, 16, 0.14);
-    --window-blur: 0px;
-    --window-border-radius: 10px;
-    --sidebar-colour: rgba(8, 12, 16, 0.12);
-    --chillax-spotify-control-squid-gif-url: none;
-    --chillax-spotify-control-squid-glow: none;
-}
-
-html,
-body {
-    background: transparent !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-}
-
+/* Keep Rem sharp. Blur belongs only to UI surfaces. */
 body::before {
-    content: "" !important;
-    position: fixed !important;
-    inset: 0 !important;
-    z-index: -100 !important;
-    display: block !important;
-    background: var(--wallpaper) center / cover no-repeat !important;
-    filter: none !important;
-    opacity: 1 !important;
-    pointer-events: none !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
+  filter: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
 }
 
 #app-mount,
@@ -53,34 +13,28 @@ body::before {
 #app-mount .layer__6b5c3,
 .theme-dark,
 .theme-light {
-    background: transparent !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
+  background: transparent !important;
+  filter: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
 }
 
 .theme-dark {
-    --background-primary: rgba(8, 12, 16, .11) !important;
-    --background-secondary: rgba(8, 12, 16, .09) !important;
-    --background-tertiary: rgba(8, 12, 16, .13) !important;
-    --background-accent: rgba(8, 12, 16, .12) !important;
-    --activity-card-background: rgba(8, 12, 16, .10) !important;
-    --deprecated-panel-background: rgba(8, 12, 16, .10) !important;
-    --modal-background: rgba(8, 12, 16, .13) !important;
-    --modal-footer-background: rgba(8, 12, 16, .11) !important;
+  --background-primary: rgba(8,12,16,.10) !important;
+  --background-secondary: rgba(8,12,16,.08) !important;
+  --background-tertiary: rgba(8,12,16,.12) !important;
+  --background-floating: rgba(8,12,16,.16) !important;
+  --modal-background: rgba(8,12,16,.12) !important;
 }
 
 .theme-light {
-    --background-primary: rgba(255, 255, 255, .12) !important;
-    --background-secondary: rgba(255, 255, 255, .10) !important;
-    --background-tertiary: rgba(255, 255, 255, .14) !important;
-    --background-accent: rgba(255, 255, 255, .13) !important;
-    --activity-card-background: rgba(255, 255, 255, .11) !important;
-    --deprecated-panel-background: rgba(255, 255, 255, .11) !important;
-    --modal-background: rgba(255, 255, 255, .13) !important;
-    --modal-footer-background: rgba(255, 255, 255, .11) !important;
+  --background-primary: rgba(255,255,255,.11) !important;
+  --background-secondary: rgba(255,255,255,.09) !important;
+  --background-tertiary: rgba(255,255,255,.13) !important;
+  --background-floating: rgba(255,255,255,.16) !important;
+  --modal-background: rgba(255,255,255,.12) !important;
 }
 
-/* Main Discord surfaces: translucent, NEVER blur the wallpaper. */
 .wrapper_ef3116,
 .container__2637a,
 .chat_f75fb0,
@@ -96,7 +50,6 @@ body::before {
 .sidebarListRounded__5e434,
 .container__5e434,
 .panels__5e434,
-.container__37e49,
 .membersWrap_c8ffbb,
 [class*="sidebar"],
 [class*="membersWrap"],
@@ -104,139 +57,61 @@ body::before {
 [class*="panels"],
 [class*="chatContent"],
 [class*="chat_f"],
-[class*="contentRegion"],
 [class*="channelTextArea"] {
-    background: rgba(8, 12, 16, .13) !important;
-    background-color: rgba(8, 12, 16, .13) !important;
-    background-image: none !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-    filter: none !important;
-    box-shadow: none !important;
+  background: rgba(8,12,16,.11) !important;
+  background-color: rgba(8,12,16,.11) !important;
+  background-image: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  filter: none !important;
+  box-shadow: none !important;
 }
 
-.theme-light .wrapper_ef3116,
-.theme-light .container__2637a,
-.theme-light .chat_f75fb0,
-.theme-light .chatContent_f75fb0,
-.theme-light .container_c8ffbb,
-.theme-light .members_c8ffbb,
-.theme-light .container__9293f,
-.theme-light .container__0b563,
-.theme-light .container_c2efea,
-.theme-light .sidebarList__5e434,
-.theme-light .channelTextArea_f75fb0,
-.theme-light .sidebar__5e434,
-.theme-light .sidebarListRounded__5e434,
-.theme-light .container__5e434,
-.theme-light .panels__5e434,
-.theme-light .container__37e49,
-.theme-light .membersWrap_c8ffbb,
-.theme-light [class*="sidebar"],
-.theme-light [class*="membersWrap"],
-.theme-light [class*="members_c"],
-.theme-light [class*="panels"],
-.theme-light [class*="chatContent"],
-.theme-light [class*="chat_f"],
-.theme-light [class*="contentRegion"],
-.theme-light [class*="channelTextArea"] {
-    background: rgba(255, 255, 255, .12) !important;
-    background-color: rgba(255, 255, 255, .12) !important;
+/* Remove Chillax's heavy black layer. */
+.layers__1c917::before,
+.layers_a23c37::before,
+[class*="layers"]::before {
+  background: transparent !important;
+  background-color: transparent !important;
+  opacity: 0 !important;
 }
 
-/* Final safety override: imported Chillax components cannot blur the Rem. */
-#app-mount * {
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-    filter: none !important;
+/* Frosted profile/popout surfaces only. */
+#app-mount [class*="userPopoutOuter"],
+#app-mount [class*="userProfileOuter"],
+#app-mount [class*="userProfileModalOuter"],
+#app-mount [class*="userProfileInnerThemed"],
+#app-mount [class*="userProfileInnerUnthemed"],
+#app-mount [class*="userProfileInnerThemedNonPremium"] {
+  background: rgba(8,12,16,.18) !important;
+  background-color: rgba(8,12,16,.18) !important;
+  background-image: none !important;
+  backdrop-filter: blur(9px) saturate(1.05) !important;
+  -webkit-backdrop-filter: blur(9px) saturate(1.05) !important;
+  filter: none !important;
 }
 
-/* Blur is allowed ONLY on profile/popout surfaces. */
-#app-mount .userPopout-2j1gM4,
-#app-mount .userPopoutOuter_c69a7b,
-#app-mount .userProfileModalOuter_c69a7b,
-#app-mount .userProfileModalInner_c69a7b,
-#app-mount [class*="userPopout"],
-#app-mount [class*="userProfileModal"] {
-    background: rgba(8, 12, 16, .17) !important;
-    background-color: rgba(8, 12, 16, .17) !important;
-    background-image: none !important;
-    backdrop-filter: blur(9px) !important;
-    -webkit-backdrop-filter: blur(9px) !important;
-    filter: none !important;
-    box-shadow: none !important;
+/* Never blur profile images/avatars/banners. */
+#app-mount [class*="userProfileInner"] img,
+#app-mount [class*="userProfileInner"] [class*="avatar"],
+#app-mount [class*="userProfileInner"] [class*="banner"] {
+  filter: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
 }
 
-html.theme-light #app-mount .userPopout-2j1gM4,
-html.theme-light #app-mount .userPopoutOuter_c69a7b,
-html.theme-light #app-mount .userProfileModalOuter_c69a7b,
-html.theme-light #app-mount .userProfileModalInner_c69a7b,
-html.theme-light #app-mount [class*="userPopout"],
-html.theme-light #app-mount [class*="userProfileModal"] {
-    background: rgba(255, 255, 255, .17) !important;
-    background-color: rgba(255, 255, 255, .17) !important;
+#app-mount [class*="userProfileInner"]::before,
+#app-mount [class*="userProfileInner"]::after {
+  background-image: none !important;
+  box-shadow: none !important;
 }
 
-/* Frosted cards, but never the wallpaper/background layer. */
-.theme-dark [class*="card"],
-.theme-dark [class*="section"],
-.theme-dark [class*="panel"],
-.theme-dark [class*="accountProfile"],
-.theme-dark [class*="customizationSection"] {
-    background-color: rgba(8, 12, 16, .12) !important;
-    background-image: none !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-    filter: none !important;
-    box-shadow: none !important;
-}
-
-*,
-*::before,
-*::after {
-    animation-duration: 0s !important;
-    animation-iteration-count: 1 !important;
-    will-change: auto !important;
-}
-
-[class*="spotify"],
-[class*="squid"],
-[class*="glow"],
-[class*="animated"] {
-    animation: none !important;
-    transition: none !important;
-}
-
-.leading_c38106 {
-    font-size: 0 !important;
-}
-
-.leading_c38106::before,
-.leading_c38106:hover::before {
-    content: "Koz" !important;
-    display: inline-block !important;
-    font-family: Poppins, sans-serif !important;
-    font-size: 12px !important;
-    font-weight: 700 !important;
-    letter-spacing: 0 !important;
-    padding: 8px 10px !important;
-    margin-left: max(var(--window-margin), 4px) !important;
-    background: rgba(8, 12, 16, .18) !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-    border-radius: 5px !important;
-}
-
-.bar_c38106,
-.title__85643 {
-    background: rgba(8, 12, 16, .08) !important;
-    box-shadow: none !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-}
-
-.winButton_c38106 > svg,
-.winButton_c38106:hover > svg {
-    transform: none !important;
-    transition: none !important;
+.theme-light #app-mount [class*="userPopoutOuter"],
+.theme-light #app-mount [class*="userProfileOuter"],
+.theme-light #app-mount [class*="userProfileModalOuter"],
+.theme-light #app-mount [class*="userProfileInnerThemed"],
+.theme-light #app-mount [class*="userProfileInnerUnthemed"],
+.theme-light #app-mount [class*="userProfileInnerThemedNonPremium"] {
+  background: rgba(255,255,255,.18) !important;
+  background-color: rgba(255,255,255,.18) !important;
 }
