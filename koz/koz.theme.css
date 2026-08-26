@@ -2,7 +2,7 @@
  * @name Koz
  * @description Lightweight transparent TUI-style theme with Rem background
  * @author Koz
- * @version 1.2.0
+ * @version 1.2.1
  */
 
 @import url("https://raw.githubusercontent.com/eusouproton/vencord-theme/main/koz/chillax-core-lite.css");
@@ -21,12 +21,9 @@
     --accentcolor2: 251, 84, 84;
     --linkcolor: 251, 84, 84;
     --accentcolorV2: #fb5454;
-    --window-margin: 20px;
-    --window-colour: rgba(8, 12, 16, .14);
-    --window-blur: 8px;
-    --window-border-radius: 10px;
 }
 
+/* Rem: SEM blur. Ela fica nítida atrás do Discord. */
 html,
 body {
     background: transparent !important;
@@ -40,6 +37,7 @@ body::before {
     pointer-events: none !important;
     display: block !important;
     background: var(--koz-wallpaper) center / cover no-repeat !important;
+    filter: none !important;
     opacity: 1 !important;
 }
 
@@ -50,8 +48,11 @@ body::before {
 .theme-dark,
 .theme-light {
     background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
 }
 
+/* Transparência sem blur nas áreas normais do Discord. */
 .theme-dark {
     --background-primary: rgba(8, 12, 16, .11) !important;
     --background-secondary: rgba(8, 12, 16, .09) !important;
@@ -76,7 +77,8 @@ body::before {
     --modal-footer-background: rgba(255, 255, 255, .12) !important;
 }
 
-/* Vidro leve: Rem visível + conteúdo embaçado. */
+/* Superfícies principais: transparentes, SEM backdrop-filter.
+   Isso impede que a imagem da Rem seja borrada inteira. */
 .wrapper_ef3116,
 .container__2637a,
 .chat_f75fb0,
@@ -105,8 +107,8 @@ body::before {
     background: rgba(8, 12, 16, .13) !important;
     background-color: rgba(8, 12, 16, .13) !important;
     background-image: none !important;
-    backdrop-filter: blur(8px) !important;
-    -webkit-backdrop-filter: blur(8px) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
     box-shadow: none !important;
 }
 
@@ -139,7 +141,7 @@ body::before {
     background-color: rgba(255, 255, 255, .12) !important;
 }
 
-/* Perfil/popout: vidro mais forte, mas sem bloco preto. */
+/* Blur SOMENTE em perfil/popout e janelas flutuantes. */
 .userPopout-2j1gM4,
 .userPopoutOuter_c69a7b,
 .userProfileModalOuter_c69a7b,
@@ -164,7 +166,7 @@ body::before {
     background-color: rgba(255, 255, 255, .17) !important;
 }
 
-/* Não usar o antigo reset global de backdrop-filter: esse era o motivo do perfil ficar sem blur. */
+/* Remove efeitos pesados sem tocar no backdrop-filter dos perfis. */
 *,
 *::before,
 *::after {
