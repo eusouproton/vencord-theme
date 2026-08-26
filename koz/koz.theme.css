@@ -7,7 +7,7 @@
 
 @import url("https://raw.githubusercontent.com/eusouproton/vencord-theme/main/koz/chillax-core-lite.css");
 @import url("https://raw.githubusercontent.com/eusouproton/vencord-theme/main/koz/blurple-recolor-lite.css");
-
+@import url("https://warrayquipsome.github.io/Chillax/Addons/SettingsModalEdited.css");
 :root {
     --koz-wallpaper: url("https://raw.githubusercontent.com/eusouproton/vencord-theme/main/rem.jpg");
     --wallpaper: var(--koz-wallpaper) !important;
