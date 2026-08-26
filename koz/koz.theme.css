@@ -2,7 +2,7 @@
  * @name Koz
  * @description Lightweight transparent TUI-style theme with Rem background
  * @author Koz
- * @version 1.2.1
+ * @version 1.2.2
  */
 
 @import url("https://raw.githubusercontent.com/eusouproton/vencord-theme/main/koz/chillax-core-lite.css");
@@ -23,7 +23,7 @@
     --accentcolorV2: #fb5454;
 }
 
-/* Rem: SEM blur. Ela fica nítida atrás do Discord. */
+/* Rem: sharp background. */
 html,
 body {
     background: transparent !important;
@@ -38,7 +38,6 @@ body::before {
     display: block !important;
     background: var(--koz-wallpaper) center / cover no-repeat !important;
     filter: none !important;
-    opacity: 1 !important;
 }
 
 #app-mount,
@@ -48,11 +47,12 @@ body::before {
 .theme-dark,
 .theme-light {
     background: transparent !important;
+    filter: none !important;
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
 }
 
-/* Transparência sem blur nas áreas normais do Discord. */
+/* Transparent Discord surfaces. */
 .theme-dark {
     --background-primary: rgba(8, 12, 16, .11) !important;
     --background-secondary: rgba(8, 12, 16, .09) !important;
@@ -77,8 +77,6 @@ body::before {
     --modal-footer-background: rgba(255, 255, 255, .12) !important;
 }
 
-/* Superfícies principais: transparentes, SEM backdrop-filter.
-   Isso impede que a imagem da Rem seja borrada inteira. */
 .wrapper_ef3116,
 .container__2637a,
 .chat_f75fb0,
@@ -109,6 +107,7 @@ body::before {
     background-image: none !important;
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
+    filter: none !important;
     box-shadow: none !important;
 }
 
@@ -141,32 +140,58 @@ body::before {
     background-color: rgba(255, 255, 255, .12) !important;
 }
 
-/* Blur SOMENTE em perfil/popout e janelas flutuantes. */
-.userPopout-2j1gM4,
-.userPopoutOuter_c69a7b,
-.userProfileModalOuter_c69a7b,
-.userProfileModalInner_c69a7b,
-[class*="userPopout"],
-[class*="userProfileModal"] {
-    background: rgba(8, 12, 16, .17) !important;
-    background-color: rgba(8, 12, 16, .17) !important;
+/*
+ * Profile blur: ONLY the profile/popout surface gets backdrop blur.
+ * The Rem wallpaper stays sharp everywhere else.
+ * Avatar/banner images are explicitly kept sharp.
+ */
+#app-mount [class*="userPopoutOuter"],
+#app-mount [class*="userProfileModalOuter"],
+#app-mount [class*="userProfileOuter"],
+#app-mount [class*="userProfileInnerThemed"],
+#app-mount [class*="userProfileInnerUnthemed"],
+#app-mount [class*="userProfileInnerThemedNonPremium"] {
+    background-color: rgba(8, 12, 16, .18) !important;
     background-image: none !important;
-    backdrop-filter: blur(10px) !important;
-    -webkit-backdrop-filter: blur(10px) !important;
+    backdrop-filter: blur(12px) saturate(1.05) !important;
+    -webkit-backdrop-filter: blur(12px) saturate(1.05) !important;
+    filter: none !important;
     box-shadow: none !important;
 }
 
-.theme-light .userPopout-2j1gM4,
-.theme-light .userPopoutOuter_c69a7b,
-.theme-light .userProfileModalOuter_c69a7b,
-.theme-light .userProfileModalInner_c69a7b,
-.theme-light [class*="userPopout"],
-.theme-light [class*="userProfileModal"] {
-    background: rgba(255, 255, 255, .17) !important;
-    background-color: rgba(255, 255, 255, .17) !important;
+.theme-light #app-mount [class*="userPopoutOuter"],
+.theme-light #app-mount [class*="userProfileModalOuter"],
+.theme-light #app-mount [class*="userProfileOuter"],
+.theme-light #app-mount [class*="userProfileInnerThemed"],
+.theme-light #app-mount [class*="userProfileInnerUnthemed"],
+.theme-light #app-mount [class*="userProfileInnerThemedNonPremium"] {
+    background-color: rgba(255, 255, 255, .18) !important;
 }
 
-/* Remove efeitos pesados sem tocar no backdrop-filter dos perfis. */
+/* Do not blur the profile's own media. */
+#app-mount [class*="userProfileInner"] img,
+#app-mount [class*="userProfileInner"] video,
+#app-mount [class*="userProfileInner"] [class*="avatar"],
+#app-mount [class*="userProfileInner"] [class*="banner"] {
+    filter: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
+/* If Discord adds an opaque inner layer, keep it translucent so the blur can show. */
+#app-mount [class*="userProfileInnerThemed"],
+#app-mount [class*="userProfileInnerUnthemed"],
+#app-mount [class*="userProfileInnerThemedNonPremium"] {
+    background: rgba(8, 12, 16, .18) !important;
+}
+
+.theme-light #app-mount [class*="userProfileInnerThemed"],
+.theme-light #app-mount [class*="userProfileInnerUnthemed"],
+.theme-light #app-mount [class*="userProfileInnerThemedNonPremium"] {
+    background: rgba(255, 255, 255, .18) !important;
+}
+
+/* Keep effects light and predictable. */
 *,
 *::before,
 *::after {
