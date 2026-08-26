@@ -1,5 +1,6 @@
-/* Koz lightweight transparency core */
+/* Koz lightweight transparency + frosted glass core */
 
+/* Keep the useful Chillax components, but override their heavy/dark surfaces below. */
 @import url("https://warrayquipsome.github.io/Chillax/Components/WindowsButtons.css");
 @import url("https://warrayquipsome.github.io/Chillax/Components/UserArea.css");
 @import url("https://warrayquipsome.github.io/Chillax/Components/Embeds.css");
@@ -17,11 +18,15 @@
     --font-size: 13px;
     --accentcolor: 251, 84, 84;
     --accentcolorV2: #fb5454;
+
+    /* Frosted glass */
     --window-margin: 20px;
-    --window-colour: rgba(0, 0, 0, 0.12);
-    --window-blur: 0px;
+    --window-colour: rgba(8, 12, 16, 0.14);
+    --window-blur: 8px;
     --window-border-radius: 10px;
-    --sidebar-colour: rgba(0, 0, 0, 0.06);
+    --sidebar-colour: rgba(8, 12, 16, 0.12);
+
+    /* Disable Chillax's animated squid/GIF control */
     --chillax-spotify-control-squid-gif-url: none;
     --chillax-spotify-control-squid-glow: none;
 }
@@ -54,28 +59,30 @@ body::before {
     background: transparent !important;
 }
 
+/* Base Discord surfaces: translucent, not black. */
 .theme-dark {
-    --background-primary: rgba(10,10,10,.10) !important;
-    --background-secondary: rgba(10,10,10,.07) !important;
-    --background-tertiary: rgba(10,10,10,.14) !important;
-    --background-accent: rgba(0,0,0,.12) !important;
-    --activity-card-background: rgba(10,10,10,.08) !important;
-    --deprecated-panel-background: rgba(10,10,10,.08) !important;
-    --modal-background: rgba(10,10,10,.12) !important;
-    --modal-footer-background: rgba(10,10,10,.10) !important;
+    --background-primary: rgba(8, 12, 16, .11) !important;
+    --background-secondary: rgba(8, 12, 16, .09) !important;
+    --background-tertiary: rgba(8, 12, 16, .13) !important;
+    --background-accent: rgba(8, 12, 16, .12) !important;
+    --activity-card-background: rgba(8, 12, 16, .10) !important;
+    --deprecated-panel-background: rgba(8, 12, 16, .10) !important;
+    --modal-background: rgba(8, 12, 16, .13) !important;
+    --modal-footer-background: rgba(8, 12, 16, .11) !important;
 }
 
 .theme-light {
-    --background-primary: rgba(255,255,255,.10) !important;
-    --background-secondary: rgba(255,255,255,.07) !important;
-    --background-tertiary: rgba(255,255,255,.12) !important;
-    --background-accent: rgba(255,255,255,.12) !important;
-    --activity-card-background: rgba(255,255,255,.08) !important;
-    --deprecated-panel-background: rgba(255,255,255,.08) !important;
-    --modal-background: rgba(255,255,255,.12) !important;
-    --modal-footer-background: rgba(255,255,255,.10) !important;
+    --background-primary: rgba(255, 255, 255, .12) !important;
+    --background-secondary: rgba(255, 255, 255, .10) !important;
+    --background-tertiary: rgba(255, 255, 255, .14) !important;
+    --background-accent: rgba(255, 255, 255, .13) !important;
+    --activity-card-background: rgba(255, 255, 255, .11) !important;
+    --deprecated-panel-background: rgba(255, 255, 255, .11) !important;
+    --modal-background: rgba(255, 255, 255, .13) !important;
+    --modal-footer-background: rgba(255, 255, 255, .11) !important;
 }
 
+/* Main glass surfaces. */
 .wrapper_ef3116,
 .container__2637a,
 .chat_f75fb0,
@@ -93,25 +100,12 @@ body::before {
 .panels__5e434,
 .container__37e49,
 .membersWrap_c8ffbb {
-    background: rgba(0,0,0,.07) !important;
-    background-color: rgba(0,0,0,.07) !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-    box-shadow: none !important;
-}
-
-[class*="sidebar"],
-[class*="membersWrap"],
-[class*="members_c"],
-[class*="panels"],
-[class*="chatContent"],
-[class*="chat_f"],
-[class*="contentRegion"],
-[class*="channelTextArea"] {
-    background-color: rgba(0,0,0,.07) !important;
+    background: rgba(8, 12, 16, .13) !important;
+    background-color: rgba(8, 12, 16, .13) !important;
     background-image: none !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+    box-shadow: none !important;
 }
 
 .theme-light .wrapper_ef3116,
@@ -131,8 +125,23 @@ body::before {
 .theme-light .panels__5e434,
 .theme-light .container__37e49,
 .theme-light .membersWrap_c8ffbb {
-    background: rgba(255,255,255,.07) !important;
-    background-color: rgba(255,255,255,.07) !important;
+    background: rgba(255, 255, 255, .12) !important;
+    background-color: rgba(255, 255, 255, .12) !important;
+}
+
+/* Dynamic Discord class families used by newer builds. */
+[class*="sidebar"],
+[class*="membersWrap"],
+[class*="members_c"],
+[class*="panels"],
+[class*="chatContent"],
+[class*="chat_f"],
+[class*="contentRegion"],
+[class*="channelTextArea"] {
+    background-color: rgba(8, 12, 16, .13) !important;
+    background-image: none !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
 }
 
 .theme-light [class*="sidebar"],
@@ -143,20 +152,21 @@ body::before {
 .theme-light [class*="chat_f"],
 .theme-light [class*="contentRegion"],
 .theme-light [class*="channelTextArea"] {
-    background-color: rgba(255,255,255,.07) !important;
+    background-color: rgba(255, 255, 255, .12) !important;
 }
 
+/* Profile/popout: translucent frosted glass instead of solid black. */
 .userPopout-2j1gM4,
 .userPopoutOuter_c69a7b,
 .userProfileModalOuter_c69a7b,
 .userProfileModalInner_c69a7b,
 [class*="userPopout"],
 [class*="userProfileModal"] {
-    background: rgba(8,8,8,.14) !important;
-    background-color: rgba(8,8,8,.14) !important;
+    background: rgba(8, 12, 16, .17) !important;
+    background-color: rgba(8, 12, 16, .17) !important;
     background-image: none !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
+    backdrop-filter: blur(9px) !important;
+    -webkit-backdrop-filter: blur(9px) !important;
     box-shadow: none !important;
 }
 
@@ -166,31 +176,33 @@ html.theme-light .userProfileModalOuter_c69a7b,
 html.theme-light .userProfileModalInner_c69a7b,
 html.theme-light [class*="userPopout"],
 html.theme-light [class*="userProfileModal"] {
-    background: rgba(255,255,255,.14) !important;
-    background-color: rgba(255,255,255,.14) !important;
+    background: rgba(255, 255, 255, .17) !important;
+    background-color: rgba(255, 255, 255, .17) !important;
 }
 
+/* Cards/panels that were previously appearing as dark blocks. */
 .theme-dark [class*="card"],
 .theme-dark [class*="section"],
 .theme-dark [class*="panel"],
 .theme-dark [class*="accountProfile"],
 .theme-dark [class*="customizationSection"] {
-    background-color: rgba(0,0,0,.10) !important;
+    background-color: rgba(8, 12, 16, .12) !important;
     background-image: none !important;
+    backdrop-filter: blur(7px) !important;
+    -webkit-backdrop-filter: blur(7px) !important;
     box-shadow: none !important;
 }
 
+/* Do NOT globally disable backdrop-filter: it is the glass effect. */
 *,
 *::before,
 *::after {
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-    animation: none !important;
-    transition: none !important;
-    filter: none !important;
+    animation-duration: 0s !important;
+    animation-iteration-count: 1 !important;
     will-change: auto !important;
 }
 
+/* Remove only known heavy animated effects. */
 [class*="spotify"],
 [class*="squid"],
 [class*="glow"],
@@ -199,6 +211,7 @@ html.theme-light [class*="userProfileModal"] {
     transition: none !important;
 }
 
+/* Koz replaces the Chillax label. */
 .leading_c38106 {
     font-size: 0 !important;
 }
@@ -212,17 +225,19 @@ html.theme-light [class*="userProfileModal"] {
     font-weight: 700 !important;
     letter-spacing: 0 !important;
     padding: 8px 10px !important;
-    margin-left: max(var(--window-margin),4px) !important;
-    background: rgba(0,0,0,.16) !important;
+    margin-left: max(var(--window-margin), 4px) !important;
+    background: rgba(8, 12, 16, .18) !important;
+    backdrop-filter: blur(6px) !important;
+    -webkit-backdrop-filter: blur(6px) !important;
     border-radius: 5px !important;
 }
 
 .bar_c38106,
 .title__85643 {
-    background: transparent !important;
+    background: rgba(8, 12, 16, .08) !important;
     box-shadow: none !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
+    backdrop-filter: blur(7px) !important;
+    -webkit-backdrop-filter: blur(7px) !important;
 }
 
 .winButton_c38106 > svg,
