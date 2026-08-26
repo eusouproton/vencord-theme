@@ -2,131 +2,157 @@
  * @name Koz
  * @description Lightweight transparent TUI-style theme with Rem background
  * @author Koz
- * @version 1.0.0
+ * @version 1.1.0
  */
 
-/* =========================
-   KOZ — LIGHTWEIGHT BASE
-   No external Chillax import.
-   No external addons, GIFs, blur or animations.
-   ========================= */
+/* Nossa base: mantém a estrutura/transparência necessária, mas sem o CSS completo pesado. */
+@import url("https://raw.githubusercontent.com/eusouproton/vencord-theme/main/koz/chillax-core-lite.css");
 
 :root {
     --koz-wallpaper: url("https://raw.githubusercontent.com/eusouproton/vencord-theme/main/rem.jpg");
-    --background-image: var(--koz-wallpaper);
-    --background-opacity: 1;
-    --accentcolor: 251, 84, 84;
-    --accentcolorV2: #fb5454;
+    --wallpaper: var(--koz-wallpaper) !important;
+    --background-image: var(--koz-wallpaper) !important;
+    --modern-dark-bg: var(--koz-wallpaper) !important;
+    --modern-light-bg: var(--koz-wallpaper) !important;
+    --bg-opacity: 100% !important;
+
     --font-name: Poppins, sans-serif;
     --font-size: 13px;
-    --window-blur: 0px;
+    --accentcolor: 251, 84, 84;
+    --accentcolorV2: #fb5454;
+
     --window-margin: 20px;
+    --window-colour: rgba(0, 0, 0, 0.38);
+    --window-blur: 0px;
     --window-border-radius: 10px;
-    --koz-panel: rgba(0, 0, 0, 0.30);
 }
 
-/* Background */
+/* Rem fica atrás do Discord. */
 html,
-body,
-#app-mount {
-    background: transparent !important;
+body {
+    background: #000 !important;
 }
 
 body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    z-index: -10;
-    pointer-events: none;
-    background-image: var(--koz-wallpaper);
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
+    content: "" !important;
+    position: fixed !important;
+    inset: 0 !important;
+    z-index: -100 !important;
+    pointer-events: none !important;
+    display: block !important;
+    background: var(--koz-wallpaper) center / cover no-repeat !important;
+    opacity: 1 !important;
 }
 
-/* Discord transparency — based on the transparency rules from the original theme */
+/* Camadas do Discord continuam transparentes para a Rem aparecer. */
+#app-mount,
+#app-mount .app__160d8,
+#app-mount .layers__1c917,
+#app-mount .layer__6b5c3,
 .theme-dark,
 .theme-light {
-    --background-primary: transparent !important;
-    --background-secondary: transparent !important;
-    --background-tertiary: transparent !important;
-    --activity-card-background: transparent !important;
-    --deprecated-panel-background: transparent !important;
-    --background-floating: rgba(15, 15, 15, 0.88) !important;
+    background: transparent !important;
 }
 
+.theme-dark {
+    --background-primary: rgba(0, 0, 0, 0.30) !important;
+    --background-secondary: rgba(0, 0, 0, 0.24) !important;
+    --background-tertiary: rgba(0, 0, 0, 0.36) !important;
+    --activity-card-background: rgba(0, 0, 0, 0.24) !important;
+    --deprecated-panel-background: rgba(0, 0, 0, 0.24) !important;
+    --background-floating: rgba(8, 8, 8, 0.78) !important;
+}
+
+.theme-light {
+    --background-primary: rgba(255, 255, 255, 0.30) !important;
+    --background-secondary: rgba(255, 255, 255, 0.24) !important;
+    --background-tertiary: rgba(255, 255, 255, 0.36) !important;
+    --activity-card-background: rgba(255, 255, 255, 0.24) !important;
+    --deprecated-panel-background: rgba(255, 255, 255, 0.24) !important;
+    --background-floating: rgba(255, 255, 255, 0.78) !important;
+}
+
+/* Superfícies principais: transparentes, mas não totalmente vazias. */
 .wrapper_ef3116,
 .container__2637a,
 .chat_f75fb0,
 .chatContent_f75fb0,
 .container_c8ffbb,
 .members_c8ffbb,
-.member_c8ffbb,
-.wrapper_d852db,
-.wrapper_fc8177,
 .container__9293f,
 .container__0b563,
 .container_c2efea,
-.visual-refresh .page_c791b2,
-.visual-refresh .mainTableContainer__09a38,
-.visual-refresh .container__0b563,
-.visual-refresh .header__0b563,
-.visual-refresh .pageBody__41ed7,
-.visual-refresh .channelRow_e4503a,
-.visual-refresh .container__551b0,
-.visual-refresh .scroller__23746,
-.visual-refresh .shop__6db1d,
-.shopScroll_e77fa3,
-.shop__08415,
-.pageWrapper_e77fa3,
-.applicationStore_f07d62,
-.visual-refresh .homeWrapper__0920e,
-.allPerksScroller_ca1a02,
-.mainPageScroller_ca1a02,
-.forumOrHome_ff5f90,
-.panels__5e434 span,
-.bodyInnerWrapper-2bQs1k,
-.container-3wLKDe {
-    background: transparent !important;
-}
-
 .sidebarList__5e434,
-.container_c8ffbb,
-.chat_f75fb0,
-.chatContent_f75fb0,
-.container__9293f,
-.channelTextArea_f75fb0 {
-    border-color: transparent !important;
+.channelTextArea_f75fb0,
+.sidebarListRounded__5e434,
+.panels__5e434,
+.accountProfileCard__1fed1 {
+    background: rgba(0, 0, 0, 0.22) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    box-shadow: none !important;
 }
 
-/* Profile/popout: transparent enough to show Rem, but still readable */
+.theme-light .wrapper_ef3116,
+.theme-light .container__2637a,
+.theme-light .chat_f75fb0,
+.theme-light .chatContent_f75fb0,
+.theme-light .container_c8ffbb,
+.theme-light .members_c8ffbb,
+.theme-light .container__9293f,
+.theme-light .container__0b563,
+.theme-light .container_c2efea,
+.theme-light .sidebarList__5e434,
+.theme-light .channelTextArea_f75fb0,
+.theme-light .sidebarListRounded__5e434,
+.theme-light .panels__5e434,
+.theme-light .accountProfileCard__1fed1 {
+    background: rgba(255, 255, 255, 0.22) !important;
+}
+
+/* Perfil/popout: deixa a Rem aparecer sem ficar ilegível. */
 .userPopout-2j1gM4,
 .userPopoutOuter_c69a7b {
-    background: rgba(0, 0, 0, 0.42) !important;
+    background: rgba(0, 0, 0, 0.48) !important;
     backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    box-shadow: none !important;
 }
 
 html.theme-light .userPopout-2j1gM4,
 html.theme-light .userPopoutOuter_c69a7b {
-    background: rgba(255, 255, 255, 0.42) !important;
+    background: rgba(255, 255, 255, 0.48) !important;
 }
 
-.footer-3naVBw {
-    background: transparent !important;
+/* Zero efeitos caros. */
+*,
+*::before,
+*::after {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    animation: none !important;
+    transition: none !important;
+    filter: none !important;
+    will-change: auto !important;
 }
 
-.avatar-2Vndt_,
-.avatar-2OC07D {
-    background: transparent !important;
-    box-shadow: none !important;
+/* Remove decorações animadas/GIFs do player. */
+[class*="squid"],
+[class*="spotifyControl"],
+.chillax-spinner,
+[class*="ChillaxTag"],
+[class*="chillaxTag"],
+[class*="chillax-tag"] {
+    display: none !important;
+    animation: none !important;
+    background-image: none !important;
 }
 
-/* Transparent scrollbars */
+/* Scrollbar leve. */
 ::-webkit-scrollbar,
 ::-webkit-scrollbar-track,
 ::-webkit-scrollbar-track-piece {
     background: transparent !important;
-    border-color: transparent !important;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -134,73 +160,12 @@ html.theme-light .userPopoutOuter_c69a7b {
     border: none !important;
 }
 
-/* Panels retain a slight transparent surface instead of opaque blocks */
-.sidebarListRounded__5e434,
-.container__5e434,
-.panels__5e434,
-.accountProfileCard__1fed1 {
-    background: rgba(0, 0, 0, 0.18) !important;
-    backdrop-filter: none !important;
-}
-
-/* Buttons */
 .lookFilled__201d5 {
-    border-radius: 8px;
     box-shadow: none !important;
-    transition: none !important;
 }
 
-html.theme-dark .lookFilled__201d5 {
-    background: rgba(36, 36, 36, 0.75) !important;
-    color: #fff !important;
-}
-
-html.theme-light .lookFilled__201d5 {
-    background: rgba(255, 255, 255, 0.75) !important;
-    color: #000 !important;
-}
-
-/* Accent */
 a,
 .theme-dark a:hover,
 .theme-light a:hover {
     color: var(--accentcolorV2) !important;
-}
-
-/* Remove expensive visual effects */
-* {
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-    animation: none !important;
-    transition: none !important;
-    filter: none !important;
-}
-
-/* Remove common heavy/animated decorative elements */
-span[class="inner-26JK4f"]:after,
-.chillax-spinner,
-[class*="squid"],
-[class*="spotifyControl"] {
-    background-image: none !important;
-    animation: none !important;
-}
-
-/* Prevent hover zoom/scale effects */
-.clickable__91a9d:hover,
-.interactive_bf202d:hover {
-    transform: none !important;
-}
-
-/* Keep popups readable without blur */
-[class*="menu"],
-[class*="popover"],
-[class*="modal"] {
-    backdrop-filter: none !important;
-}
-
-/* Koz branding */
-[class*="ChillaxTag"],
-[class*="chillaxTag"],
-[class*="chillax-tag"] {
-    display: none !important;
 }
