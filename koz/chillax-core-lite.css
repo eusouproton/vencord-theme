@@ -1,117 +1,134 @@
-/* Koz frosted glass patch */
+/**
+ * Chillax Otimizado + Rem
+ * Transparência + Blur só em perfis
+ */
 
-/* Keep Rem sharp. Blur belongs only to UI surfaces. */
-body::before {
-  filter: none !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-}
+/* Fonte */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
 
-#app-mount,
-#app-mount .app__160d8,
-#app-mount .layers__1c917,
-#app-mount .layer__6b5c3,
-.theme-dark,
-.theme-light {
-  background: transparent !important;
-  filter: none !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-}
-
-.theme-dark {
-  --background-primary: rgba(8,12,16,.10) !important;
-  --background-secondary: rgba(8,12,16,.08) !important;
-  --background-tertiary: rgba(8,12,16,.12) !important;
-  --background-floating: rgba(8,12,16,.16) !important;
-  --modal-background: rgba(8,12,16,.12) !important;
-}
-
-.theme-light {
-  --background-primary: rgba(255,255,255,.11) !important;
-  --background-secondary: rgba(255,255,255,.09) !important;
-  --background-tertiary: rgba(255,255,255,.13) !important;
-  --background-floating: rgba(255,255,255,.16) !important;
-  --modal-background: rgba(255,255,255,.12) !important;
-}
-
+/* ========== TRANSPARÊNCIA GERAL ========== */
 .wrapper_ef3116,
 .container__2637a,
 .chat_f75fb0,
 .chatContent_f75fb0,
 .container_c8ffbb,
 .members_c8ffbb,
+.member_c8ffbb,
+.sidebarList__5e434,
 .container__9293f,
+.channelTextArea_f75fb0,
+.forumOrHome_ff5f90,
+.wrapper_d852db,
+.wrapper_fc8177,
+.wrapper_cb9592,
+.minimum_cb9592,
+.callContainer_cb9592,
+.videoGrid_a21736,
 .container__0b563,
 .container_c2efea,
-.sidebarList__5e434,
-.channelTextArea_f75fb0,
-.sidebar__5e434,
-.sidebarListRounded__5e434,
-.container__5e434,
-.panels__5e434,
-.membersWrap_c8ffbb,
-[class*="sidebar"],
-[class*="membersWrap"],
-[class*="members_c"],
-[class*="panels"],
-[class*="chatContent"],
-[class*="chat_f"],
-[class*="channelTextArea"] {
-  background: rgba(8,12,16,.11) !important;
-  background-color: rgba(8,12,16,.11) !important;
-  background-image: none !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-  filter: none !important;
-  box-shadow: none !important;
+.visual-refresh .page_c791b2,
+.visual-refresh .shop__6db1d,
+.shopScroll_e77fa3,
+.applicationStore_f07d62,
+.visual-refresh .homeWrapper__0920e {
+    background: transparent !important;
+    background-color: transparent !important;
+    border-color: transparent !important;
 }
 
-/* Remove Chillax's heavy black layer. */
-.layers__1c917::before,
-.layers_a23c37::before,
-[class*="layers"]::before {
-  background: transparent !important;
-  background-color: transparent !important;
-  opacity: 0 !important;
+/* Sidebar sem blur */
+.sidebarListRounded__5e434 {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
 }
 
-/* Frosted profile/popout surfaces only. */
-#app-mount [class*="userPopoutOuter"],
-#app-mount [class*="userProfileOuter"],
-#app-mount [class*="userProfileModalOuter"],
-#app-mount [class*="userProfileInnerThemed"],
-#app-mount [class*="userProfileInnerUnthemed"],
-#app-mount [class*="userProfileInnerThemedNonPremium"] {
-  background: rgba(8,12,16,.18) !important;
-  background-color: rgba(8,12,16,.18) !important;
-  background-image: none !important;
-  backdrop-filter: blur(9px) saturate(1.05) !important;
-  -webkit-backdrop-filter: blur(9px) saturate(1.05) !important;
-  filter: none !important;
+/* ========== JANELA PRINCIPAL ========== */
+.content__5e434 {
+    margin: var(--window-margin, 20px);
+    margin-top: 4px;
+    overflow: hidden;
+    border-radius: var(--window-border-radius, 10px);
+    background: var(--window-colour, rgba(0, 0, 0, 0.45)) !important;
+    backdrop-filter: blur(3px) !important;
+    -webkit-backdrop-filter: blur(3px) !important;
 }
 
-/* Never blur profile images/avatars/banners. */
-#app-mount [class*="userProfileInner"] img,
-#app-mount [class*="userProfileInner"] [class*="avatar"],
-#app-mount [class*="userProfileInner"] [class*="banner"] {
-  filter: none !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
+/* ========== FUNDO REM ========== */
+.bg__960e4 {
+    background-image: var(--background-image) !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-attachment: fixed !important;
+    filter: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    opacity: 1 !important;
 }
 
-#app-mount [class*="userProfileInner"]::before,
-#app-mount [class*="userProfileInner"]::after {
-  background-image: none !important;
-  box-shadow: none !important;
+/* ========== PERFIS (Blur localizado) ========== */
+.userPopout-2j1gM4,
+[class*="userPopoutOuter"],
+[class*="userProfileInner"],
+[class*="userProfileModalInner"] {
+    background: rgba(15, 15, 18, 0.5) !important;
+    backdrop-filter: blur(5px) !important;
+    -webkit-backdrop-filter: blur(5px) !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
 }
 
-.theme-light #app-mount [class*="userPopoutOuter"],
-.theme-light #app-mount [class*="userProfileOuter"],
-.theme-light #app-mount [class*="userProfileModalOuter"],
-.theme-light #app-mount [class*="userProfileInnerThemed"],
-.theme-light #app-mount [class*="userProfileInnerUnthemed"],
-.theme-light #app-mount [class*="userProfileInnerThemedNonPremium"] {
-  background: rgba(255,255,255,.18) !important;
-  background-color: rgba(255,255,255,.18) !important;
+/* Preserva a nitidez de imagens e vídeos no perfil */
+[class*="userPopout"] img,
+[class*="userProfile"] img,
+[class*="userPopout"] video,
+[class*="userProfile"] video {
+    filter: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
+/* ========== SCROLLBAR ========== */
+::-webkit-scrollbar,
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-track-piece {
+    background: transparent !important;
+    border: none !important;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--chillax-scroller-color, transparent) !important;
+    border: none !important;
+}
+
+/* ========== INTERFACE ========== */
+.clickable__91a9d:hover,
+.interactive_bf202d:hover {
+    transform: none !important;
+}
+
+/* ========== AJUSTES FINAIS DE INTERFACE ========== */
+.lookFilled__201d5 {
+    border-radius: 45px !important;
+    box-shadow: none !important;
+}
+
+html.theme-dark .mentioned__5126c {
+    background: rgba(var(--accentcolor, 251, 84, 84), 0.25) !important;
+}
+
+html.theme-dark .mentioned__5126c:before {
+    background: var(--accentcolorV2, #fb5454) !important;
+}
+
+.searchBar_e6b769,
+.header_f37cb1 {
+    box-shadow: none !important;
+}
+
+.tabBody__133bf:before,
+.content_f75fb0:before {
+    display: none !important;
+}
+
+.circleIconButton__5bc7e {
+    border-radius: 50px !important;
 }
