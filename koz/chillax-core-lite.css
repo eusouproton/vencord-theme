@@ -18,12 +18,14 @@
     --accentcolor: 251, 84, 84;
     --accentcolorV2: #fb5454;
     --window-margin: 20px;
-    --window-colour: rgba(0, 0, 0, 0.62);
+    --window-colour: rgba(0, 0, 0, 0.30);
     --window-blur: 0px;
     --window-border-radius: 10px;
+    --sidebar-colour: rgba(0, 0, 0, 0.14);
+    --chillax-spotify-control-squid-gif-url: none;
+    --chillax-spotify-control-squid-glow: none;
 }
 
-/* Put the Rem directly behind Discord. */
 html,
 body {
     background: #111 !important;
@@ -41,7 +43,6 @@ body::before {
     background-repeat: no-repeat !important;
     opacity: 1 !important;
     pointer-events: none !important;
-    animation: none !important;
 }
 
 #app-mount,
@@ -54,22 +55,21 @@ body::before {
 }
 
 .theme-dark {
-    --background-primary: rgba(15, 15, 15, 0.62) !important;
-    --background-secondary: rgba(15, 15, 15, 0.52) !important;
-    --background-tertiary: rgba(10, 10, 10, 0.68) !important;
-    --activity-card-background: rgba(15, 15, 15, 0.50) !important;
-    --deprecated-panel-background: rgba(15, 15, 15, 0.50) !important;
+    --background-primary: rgba(15,15,15,.32) !important;
+    --background-secondary: rgba(15,15,15,.22) !important;
+    --background-tertiary: rgba(10,10,10,.38) !important;
+    --activity-card-background: rgba(15,15,15,.25) !important;
+    --deprecated-panel-background: rgba(15,15,15,.25) !important;
 }
 
 .theme-light {
-    --background-primary: rgba(255, 255, 255, 0.68) !important;
-    --background-secondary: rgba(255, 255, 255, 0.58) !important;
-    --background-tertiary: rgba(255, 255, 255, 0.72) !important;
-    --activity-card-background: rgba(255, 255, 255, 0.58) !important;
-    --deprecated-panel-background: rgba(255, 255, 255, 0.58) !important;
+    --background-primary: rgba(255,255,255,.34) !important;
+    --background-secondary: rgba(255,255,255,.24) !important;
+    --background-tertiary: rgba(255,255,255,.38) !important;
+    --activity-card-background: rgba(255,255,255,.25) !important;
+    --deprecated-panel-background: rgba(255,255,255,.25) !important;
 }
 
-/* Translucent panels, no blur. */
 .wrapper_ef3116,
 .container__2637a,
 .chat_f75fb0,
@@ -80,10 +80,16 @@ body::before {
 .container__0b563,
 .container_c2efea,
 .sidebarList__5e434,
-.channelTextArea_f75fb0 {
-    background: rgba(10, 10, 10, 0.34) !important;
+.channelTextArea_f75fb0,
+.sidebar__5e434,
+.sidebarListRounded__5e434,
+.container__5e434,
+.panels__5e434,
+.container__37e49 {
+    background: rgba(0,0,0,.16) !important;
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
+    box-shadow: none !important;
 }
 
 .theme-light .wrapper_ef3116,
@@ -96,24 +102,32 @@ body::before {
 .theme-light .container__0b563,
 .theme-light .container_c2efea,
 .theme-light .sidebarList__5e434,
-.theme-light .channelTextArea_f75fb0 {
-    background: rgba(255, 255, 255, 0.34) !important;
+.theme-light .channelTextArea_f75fb0,
+.theme-light .sidebar__5e434,
+.theme-light .sidebarListRounded__5e434,
+.theme-light .container__5e434,
+.theme-light .panels__5e434,
+.theme-light .container__37e49 {
+    background: rgba(255,255,255,.16) !important;
 }
 
-/* Profile stays translucent rather than fully transparent. */
 .userPopout-2j1gM4,
-.userPopoutOuter_c69a7b {
-    background: rgba(12, 12, 12, 0.72) !important;
+.userPopoutOuter_c69a7b,
+.userProfileModalOuter_c69a7b,
+.userProfileModalInner_c69a7b {
+    background: rgba(12,12,12,.34) !important;
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
+    box-shadow: none !important;
 }
 
 html.theme-light .userPopout-2j1gM4,
-html.theme-light .userPopoutOuter_c69a7b {
-    background: rgba(255, 255, 255, 0.78) !important;
+html.theme-light .userPopoutOuter_c69a7b,
+html.theme-light .userProfileModalOuter_c69a7b,
+html.theme-light .userProfileModalInner_c69a7b {
+    background: rgba(255,255,255,.34) !important;
 }
 
-/* Remove expensive effects. */
 *,
 *::before,
 *::after {
@@ -125,37 +139,32 @@ html.theme-light .userPopoutOuter_c69a7b {
     will-change: auto !important;
 }
 
-::-webkit-scrollbar,
-::-webkit-scrollbar-track,
-::-webkit-scrollbar-track-piece {
-    background: transparent !important;
-}
-
-::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.14) !important;
-    border: none !important;
-}
-
-.sidebarListRounded__5e434,
-.panels__5e434,
-.accountProfileCard__1fed1 {
-    background: rgba(8, 8, 8, 0.42) !important;
+.leading_c38106::before,
+.leading_c38106:hover::before {
+    content: "Koz" !important;
+    font-family: Poppins, sans-serif !important;
+    font-size: 12px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0 !important;
+    padding: 8px 10px !important;
+    margin-left: max(var(--window-margin),4px) !important;
+    background: rgba(0,0,0,.28) !important;
     backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border-radius: 5px !important;
+    transition: none !important;
+}
+
+.bar_c38106,
+.title__85643 {
+    background: transparent !important;
     box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
 }
 
-html.theme-light .sidebarListRounded__5e434,
-html.theme-light .panels__5e434,
-html.theme-light .accountProfileCard__1fed1 {
-    background: rgba(255, 255, 255, 0.42) !important;
-}
-
-.lookFilled__201d5 {
-    box-shadow: none !important;
-}
-
-a,
-.theme-dark a:hover,
-.theme-light a:hover {
-    color: var(--accentcolorV2) !important;
+.winButton_c38106 > svg,
+.winButton_c38106:hover > svg {
+    transform: none !important;
+    transition: none !important;
 }
