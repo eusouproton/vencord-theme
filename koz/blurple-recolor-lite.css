@@ -1,0 +1,59 @@
+/* Localized BlurpleRecolor dependency.
+   Based on the public BlurpleRecolor addon by DevilBro/Mirco Wittrien.
+   Kept local so Koz does not depend on the external CSS import.
+*/
+
+:root {
+    --accentcolor: 251, 84, 84;
+    --accentcolor2: 251, 84, 84;
+    --linkcolor: 251, 84, 84;
+
+    --accentcolor_v: var(--accentcolor_s, var(--accentcolor));
+    --accentcolor2_v: var(--accentcolor2_s, var(--accentcolor2));
+    --linkcolor_v: var(--linkcolor_s, var(--linkcolor));
+
+    --accentcolor-hover: rgb(var(--accentcolor_v)) linear-gradient(0deg, rgba(255,255,255,.15), rgba(255,255,255,.15));
+    --accentcolor-active: rgb(var(--accentcolor_v)) linear-gradient(0deg, rgba(255,255,255,.30), rgba(255,255,255,.30));
+    --accentcolor2-hover: rgb(var(--accentcolor2_v)) linear-gradient(0deg, rgba(255,255,255,.15), rgba(255,255,255,.15));
+    --accentcolor2-active: rgb(var(--accentcolor2_v)) linear-gradient(0deg, rgba(255,255,255,.30), rgba(255,255,255,.30));
+
+    --bdfdb-blurple: rgb(var(--accentcolor_v)) !important;
+    --bd-blue: rgb(var(--accentcolor_v)) !important;
+    --bd-blue-hover: var(--accentcolor-hover) !important;
+    --bd-blue-active: var(--accentcolor-active) !important;
+    --blurple: rgb(var(--accentcolor_v)) !important;
+}
+
+.theme-light {
+    --logo-primary: rgb(var(--accentcolor_v));
+}
+
+[data-popout-root],
+html,
+.theme-light,
+.theme-dark,
+.visual-refresh .theme-light,
+.visual-refresh .theme-dark,
+.visual-refresh.theme-light,
+.visual-refresh.theme-dark,
+.theme-amoled {
+    --bg-brand: rgb(var(--accentcolor_v));
+    --background-brand: rgb(var(--accentcolor_v));
+    --checkbox-background-checked: rgb(var(--accentcolor_v));
+    --checkbox-background-selected-default: rgb(var(--accentcolor_v));
+    --checkbox-border-checked: rgb(var(--accentcolor_v));
+    --checkbox-border-selected-default: rgb(var(--accentcolor_v));
+    --input-focused-border: rgb(var(--accentcolor_v));
+    --border-focus: rgb(var(--accentcolor_v));
+    --text-brand: rgb(var(--accentcolor_v));
+    --text-link: rgb(var(--linkcolor_v));
+    --text-link-low-saturation: rgb(var(--linkcolor_v));
+    --info-help-background: rgba(var(--linkcolor_v), .1);
+    --info-help-foreground: rgb(var(--linkcolor_v));
+    --icon-link: rgb(var(--linkcolor_v));
+    --focus-primary: rgb(var(--linkcolor_v));
+    --control-brand-foreground: rgb(var(--accentcolor_v)) !important;
+    --control-brand-foreground-new: rgb(var(--accentcolor_v)) !important;
+    --mention-background: rgba(var(--accentcolor_v), .3) !important;
+    --message-highlight-background-default: rgba(var(--accentcolor_v), .2) !important;
+}
